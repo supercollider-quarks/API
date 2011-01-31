@@ -29,10 +29,11 @@ p.p19 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px Monaco; color: #001076}
 p.p20 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px Monaco; color: #1a2509}
 p.p21 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px Monaco; color: #431709; min-height: 12.0px}
 p.p22 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px Monaco; color: #0012af}
-p.p23 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px Monaco; color: #606060}
-p.p24 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; color: #000000}
-p.p25 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px Monaco; color: #0000ff}
-p.p26 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px Monaco; color: #295d0e}
+p.p23 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px Monaco; color: #007300}
+p.p24 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px Monaco; color: #606060}
+p.p25 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; color: #000000}
+p.p26 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px Monaco; color: #0000ff}
+p.p27 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px Monaco; color: #295d0e}
 span.s1 {color: #0012af}
 span.s2 {color: #295d0e}
 span.s3 {color: #4d4d4d}
@@ -44,8 +45,10 @@ span.s8 {color: #1a2509}
 span.s9 {color: #431709}
 span.s10 {color: #1d1d1d}
 span.s11 {color: #0000bf}
-span.s12 {color: #606060}
-span.s13 {color: #bf0000}
+span.s12 {color: #bf0000}
+span.s13 {color: #606060}
+span.s14 {font: 12.0px Arial}
+span.s15 {font: 9.0px Monaco; color: #0000ff}
 span.Apple-tab-span {white-space:pre}
 </style>
 </head>
@@ -373,41 +376,53 @@ span.Apple-tab-span {white-space:pre}
 <p class="p7"><br></p>
 <p class="p7"><br></p>
 <p class="p7"><span class="Apple-tab-span">	</span></p>
+<p class="p10"><b>Processing Example</b></p>
 <p class="p7"><br></p>
 <p class="p2">A basic OSC receiving processing sketch is included in the Help folder that works with this basic example.</p>
 <p class="p3"><br></p>
+<p class="p2">You need the http://www.sojamo.de/oscP5 library.</p>
+<p class="p3"><br></p>
 <p class="p5"><br></p>
 <p class="p6">(</p>
-<p class="p13">a = <span class="s11">API</span>(<span class="s6">'myApp'</span>);</p>
+<p class="p23"><span class="s4">a = </span><span class="s11">API</span><span class="s4">(</span>'osctest'<span class="s4">);</span></p>
 <p class="p14"><br></p>
 <p class="p15">// define</p>
-<p class="p13">a.add(<span class="s6">'wiggle'</span>,{ <span class="s11">arg</span> numTimes;</p>
-<p class="p23"><span class="s4"><span class="Apple-tab-span">	</span></span>"------commencing wiggling------"<span class="s4">.postln;</span></p>
-<p class="p13"><span class="Apple-tab-span">	</span>numTimes.do({</p>
-<p class="p13"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s12">"wiggling"</span>.postln;</p>
-<p class="p13"><span class="Apple-tab-span">	</span>});</p>
-<p class="p23"><span class="s4"><span class="Apple-tab-span">	</span></span>"------wiggling completed------"<span class="s4">.postln;</span></p>
-<p class="p13"><span class="Apple-tab-span">	</span><span class="s12">""</span>.postln;</p>
+<p class="p13">a.add(<span class="s6">'wiggle'</span>,{ arg x,y;</p>
+<p class="p24"><span class="s4"><span class="Apple-tab-span">	</span>(</span>"wiggling" + x + y)<span class="s4">.postln;</span></p>
 <p class="p14"><span class="Apple-tab-span">	</span></p>
-<p class="p23"><span class="s4"><span class="Apple-tab-span">	</span></span>"this is the return value"<span class="s4"> </span><span class="s13">// return value</span></p>
+<p class="p24"><span class="s4"><span class="Apple-tab-span">	</span></span>"wiggled" + Main.elapsedTime<span class="s4"> </span><span class="s12">// return value</span></p>
 <p class="p13">});</p>
+<p class="p14"><br></p>
+<p class="p6">a.add(<span class="s6">'click'</span>,{ <span class="s11">arg</span> x,y;</p>
+<p class="p6"><span class="Apple-tab-span">	</span>[x,y].postln;</p>
+<p class="p6"><span class="Apple-tab-span">	</span><span class="s13">""</span>.postln;</p>
+<p class="p7"><span class="Apple-tab-span">	</span></p>
+<p class="p24"><span class="s4"><span class="Apple-tab-span">	</span></span>"You clicked" + x + y<span class="s4"> </span><span class="s12">// return value</span></p>
+<p class="p6">});</p>
+<p class="p14"><br></p>
 <p class="p14"><br></p>
 <p class="p13">a.mountOSC</p>
 <p class="p6">)</p>
 <p class="p5"><br></p>
-<p class="p4">Processing sends from a different port each time it start the applet.</p>
-<p class="p4">In the sketch it sends a /API/registerListener command so that SC knows the addr/port to reply to</p>
+<p class="p2"><span class="s14">Open Help/</span>osctest.pde and run it.</p>
 <p class="p5"><br></p>
-<p class="p15">// processing code</p>
+<p class="p5"><br></p>
+<p class="p5"><br></p>
+<p class="p5"><br></p>
+<p class="p4">The Processing osc lib appears to send from a different port each time it starts the applet.</p>
+<p class="p5"><br></p>
+<p class="p4">The sketch sends a <span class="s15">/API/registerListener</span> command so that SC knows the addr/port to reply to</p>
+<p class="p5"><br></p>
+<p class="p15">// this is processing code</p>
 <p class="p13">(</p>
-<p class="p23"><span class="s4"><span class="Apple-converted-space">  </span></span><span class="s11">OscMessage</span><span class="s4"> msg = new </span><span class="s11">OscMessage</span><span class="s4">(</span>"/API/registerListener"<span class="s4">);</span></p>
+<p class="p24"><span class="s4"><span class="Apple-converted-space">  </span></span><span class="s11">OscMessage</span><span class="s4"> msg = new </span><span class="s11">OscMessage</span><span class="s4">(</span>"/API/registerListener"<span class="s4">);</span></p>
 <p class="p13"><span class="Apple-converted-space">  </span>msg.add(listeningPort);</p>
 <p class="p13"><span class="Apple-converted-space">  </span>oscP5.send(msg, sc);</p>
 <p class="p13">)</p>
 <p class="p5"><br></p>
 <p class="p4">Or you can register from the SC side:</p>
 <p class="p5"><br></p>
-<p class="p24"><b>API.registerListener( callsFromNetAddr,sendResponseToNetAddr,responseCmdName)</b></p>
+<p class="p25"><b>API.registerListener( callsFromNetAddr,sendResponseToNetAddr,responseCmdName)</b></p>
 <p class="p2"><span class="Apple-tab-span">	</span>callsFromNetAddr:<span class="Apple-converted-space">  </span>calls from this address</p>
 <p class="p2"><span class="Apple-tab-span">	</span>sendResponseToNetAddr: responses will be sent here</p>
 <p class="p2"><span class="Apple-tab-span">	</span>responseCmdName:<span class="Apple-converted-space">  </span>optional response OSC path (default /response)</p>
@@ -419,7 +434,7 @@ span.Apple-tab-span {white-space:pre}
 <p class="p5"><br></p>
 <p class="p4">For the other app to get a response sent to a path other than the default responseCmdName:</p>
 <p class="p5"><br></p>
-<p class="p25"><span class="Apple-tab-span">	</span>/API/call /pathToSendReturnValue /myApp/funcName arg1 arg2<span class="Apple-converted-space"> </span></p>
+<p class="p26"><span class="Apple-tab-span">	</span>/API/call /pathToSendReturnValue /myApp/funcName arg1 arg2<span class="Apple-converted-space"> </span></p>
 <p class="p7"><br></p>
 <p class="p6">note: this may change to be within the specific API's directory</p>
 <p class="p7"><br></p>
@@ -511,7 +526,7 @@ span.Apple-tab-span {white-space:pre}
 <p class="p7"><br></p>
 <p class="p6">(</p>
 <p class="p8">// a boring gui</p>
-<p class="p26"><span class="s4">a = </span><span class="s1">API</span><span class="s4">(</span>'stepper'<span class="s4">);</span></p>
+<p class="p27"><span class="s4">a = </span><span class="s1">API</span><span class="s4">(</span>'stepper'<span class="s4">);</span></p>
 <p class="p6">w = <span class="s1">Window</span>.new.front;</p>
 <p class="p6">w.flow({ <span class="s1">arg</span> l;</p>
 <p class="p6"><span class="Apple-tab-span">	</span><span class="s1">Button</span>(l,80@17)</p>
@@ -555,7 +570,7 @@ span.Apple-tab-span {white-space:pre}
 <p class="p7"><span class="Apple-tab-span">	</span></p>
 <p class="p6"><span class="Apple-tab-span">	</span><span class="s1">var</span> img,numSteps,scale;</p>
 <p class="p7"><span class="Apple-tab-span">	</span></p>
-<p class="p26"><span class="s4"><span class="Apple-tab-span">	</span>a = </span><span class="s1">API</span><span class="s4">(</span>'stepper'<span class="s4">);</span></p>
+<p class="p27"><span class="s4"><span class="Apple-tab-span">	</span>a = </span><span class="s1">API</span><span class="s4">(</span>'stepper'<span class="s4">);</span></p>
 <p class="p6"><span class="Apple-tab-span">	</span>img = <span class="s1">Image</span>(path);</p>
 <p class="p6"><span class="Apple-tab-span">	</span>img.scalesWhenResized = <span class="s1">true</span>;</p>
 <p class="p6"><span class="Apple-tab-span">	</span>img.setSize( img.width, 1 );</p>

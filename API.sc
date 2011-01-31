@@ -3,7 +3,7 @@
 API {
 	
 	classvar <all,<listeners,<>defaultResponse ='/response';
-	var name,functions;
+	var <name,functions;
 	var oscResponders;
 	
 	*new { arg name;
@@ -81,7 +81,8 @@ API {
 		});
 		oscResponders = oscResponders.addAll( [
 			// yes, these overwrite any at this addr / path
-			// even if for other APIs
+			// even if for other APIs, because its the same action
+			// and callback paths are /absolute
 			// may change this
 			OSCresponder(addr,'/API/registerListener',
 				{ arg time,resp,message,addr;
@@ -131,7 +132,7 @@ API {
 		^[addr,defaultResponse]
 	}
 	*prFormatResult { arg result;
-		if(result.isString,{
+		^if(result.isString,{
 			result = [result];
 		},{
 			result = result.asArray;
